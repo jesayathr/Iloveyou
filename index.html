@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>I Miss You</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6f4ec;
+      color: #2b2b2b;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      color: #387d6e;
+    }
+    input, button {
+      padding: 0.8rem;
+      font-size: 1rem;
+      margin: 0.5rem;
+      border: 2px solid #87c9a8;
+      border-radius: 10px;
+    }
+    button {
+      background-color: #a1e3c2;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #80d2a3;
+    }
+    #messageBox {
+      margin-top: 2rem;
+      white-space: pre-line;
+      background-color: #ffffff;
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💌 I Miss You Interactive</h1>
+  <p>Let him know how much you miss him</p>
+
+  <input type="text" id="nameInput" placeholder="Name of the person" />
+  <input type="text" id="feelingInput" placeholder="How do you feel?" />
+  <br />
+  <button onclick="expressMissing()">Send Message</button>
+
+  <div id="messageBox"></div>
+
+  <script>
+    function expressMissing() {
+      const name = document.getElementById('nameInput').value.trim();
+      const feeling = document.getElementById('feelingInput').value.trim();
+      const box = document.getElementById('messageBox');
+
+      if (!name || !feeling) {
+        alert("Please fill in both fields.");
+        return;
+      }
+
+      let message = `To the special ${name},\n\nI just want you to know that I miss you dearly.\nEvery day that passes, you're always on my mind.\n\n`;
+
+      const lowerFeeling = feeling.toLowerCase();
+      if (lowerFeeling.includes("sad") || lowerFeeling.includes("really missing")) {
+        message += `Maybe we could ease this longing with a Spotify session together?\nOr how about a virtual rave date to let loose?\nLet’s create beautiful memories—even from afar.`;
+      } else if (lowerFeeling.includes("happy") || lowerFeeling.includes("good")) {
+        message += `Even though I feel happy, there's a little empty space only you can fill.\nLet's celebrate this happiness with a Spotify session or a rave date!`;
+      } else {
+        message += `I know you're feeling ${feeling}.\nWhatever it is, I’m sending love your way.\nLet’s catch up soon—maybe over a virtual hangout?`;
+      }
+
+      box.innerText = message;
+      box.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
